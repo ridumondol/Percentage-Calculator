@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Percentage Calculator</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff6a00,#ee0979,#00c6ff,#0072ff);
+background-size:400% 400%;
+animation:gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+width:320px;
+text-align:center;
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+h2{
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:8px;
+font-size:16px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:white;
+color:#333;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Percentage Calculator</h2>
+
+<input type="number" id="num1" placeholder="Enter First Number">
+<input type="number" id="num2" placeholder="Enter Second Number">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function calculate(){
+
+let number1=parseFloat(document.getElementById("num1").value);
+let number2=parseFloat(document.getElementById("num2").value);
+
+if(isNaN(number1)||isNaN(number2)){
+document.getElementById("result").innerHTML="⚠ Enter valid numbers";
+return;
+}
+
+let n3=100/number1;
+let n4=n3*number2;
+
+document.getElementById("result").innerHTML="Result: "+n4.toFixed(2)+"%";
+
+}
+
+</script>
+
+</body>
+</html>
